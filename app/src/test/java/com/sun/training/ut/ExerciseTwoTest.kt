@@ -22,7 +22,7 @@ class ExerciseTwoTest {
     }
 
     @Test
-    fun calculateFee_VipMember() {
+    fun calculateFee_VipMember_Return0() {
         viewModel.apply {
             onTimeChanged(8, 10)
             onDateChanged(26, 10)
@@ -33,7 +33,7 @@ class ExerciseTwoTest {
     }
 
     @Test
-    fun calculateFee_NormalDay_WorkingHour_NonVipMember() {
+    fun calculateFee_NormalDay_WorkingHour_NonVipMember_Return0() {
         viewModel.apply {
             onTimeChanged(9, 10)
             onDateChanged(26, 10)
@@ -44,7 +44,7 @@ class ExerciseTwoTest {
     }
 
     @Test
-    fun calculateFee_NormalDay_NotWorkingHour_NonVipMember() {
+    fun calculateFee_NormalDay_NotWorkingHour_NonVipMember_Return110() {
         viewModel.apply {
             onTimeChanged(19, 30)
             onDateChanged(26, 10)
@@ -55,7 +55,7 @@ class ExerciseTwoTest {
     }
 
     @Test
-    fun calculateFee_Holidays_WorkingHour_NonVipMember() {
+    fun calculateFee_Holidays_WorkingHour_NonVipMember_Return110() {
         viewModel.apply {
             onTimeChanged(9, 30)
             onDateChanged(2, 8)
@@ -66,10 +66,21 @@ class ExerciseTwoTest {
     }
 
     @Test
-    fun calculateFee_Holidays_NotWorkingHour_NonVipMember() {
+    fun calculateFee_Holidays_NotWorkingHour_NonVipMember_Return110() {
         viewModel.apply {
             onTimeChanged(22, 30)
             onDateChanged(2, 8)
+            onVipChecked(false)
+            calculateFee()
+        }
+        Assert.assertEquals(Constant.FEE_110, viewModel.feeLiveData.value)
+    }
+
+    @Test
+    fun calculateFee_NormalDay_WorkingHourEqual845_NonVipMember_Return110() {
+        viewModel.apply {
+            onTimeChanged(8, 45)
+            onDateChanged(26, 10)
             onVipChecked(false)
             calculateFee()
         }
