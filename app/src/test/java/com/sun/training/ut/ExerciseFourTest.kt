@@ -22,42 +22,42 @@ class ExerciseFourTest {
     }
 
     @Test
-    fun calculateColor_holidays_saturday(){
+    fun calculateColor_Holidays_Saturday_ReturnRedColor(){
         viewModel.onDateChanged(9,3)
         viewModel.calculateColor()
         Assert.assertEquals(Constant.Color.RED.toString(), viewModel.colorLiveData.value)
     }
 
     @Test
-    fun calculateColor_holidays_sunday(){
+    fun calculateColor_Holidays_Sunday_ReturnRedColor(){
         viewModel.onDateChanged(9,4)
         viewModel.calculateColor()
         Assert.assertEquals(Constant.Color.RED.toString(), viewModel.colorLiveData.value)
     }
 
     @Test
-    fun calculateColor_holidays_normalDay(){
+    fun calculateColor_Holidays_NormalDay_ReturnRedColor(){
         viewModel.onDateChanged(3,30)
         viewModel.calculateColor()
         Assert.assertEquals(Constant.Color.RED.toString(), viewModel.colorLiveData.value)
     }
 
     @Test
-    fun calculateColor_saturday(){
+    fun calculateColor_Saturday_ReturnBlueColor(){
         viewModel.onDateChanged(11,19)
         viewModel.calculateColor()
         Assert.assertEquals(Constant.Color.BLUE.toString(), viewModel.colorLiveData.value)
     }
 
     @Test
-    fun calculateColor_sunday(){
+    fun calculateColor_Sunday_ReturnRedColor(){
         viewModel.onDateChanged(11,20)
         viewModel.calculateColor()
         Assert.assertEquals(Constant.Color.RED.toString(), viewModel.colorLiveData.value)
     }
 
     @Test
-    fun calculateColor_normalDay(){
+    fun calculateColor_NormalDay_ReturnRedColor(){
         viewModel.onDateChanged(11,3)
         viewModel.calculateColor()
         Assert.assertEquals(Constant.Color.BLACK.toString(), viewModel.colorLiveData.value)
